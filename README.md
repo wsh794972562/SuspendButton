@@ -19,6 +19,7 @@
 # 使用方法
 
 只要是继承UIScrollView的子类都可以用这个demo。
+
 步骤：1.将我工程中的 UIButton+NMCategory.m 和 UIButton+NMCategory.h 拖到你的工程中以及利用CocoaPods导入 pod "ReactiveCocoa"
       
       2.在你需要添加按钮的控制器中添加  #import "UIButton+NMCategory.h" 和 #import "ReactiveCocoa.h"
@@ -45,7 +46,7 @@
             [_btn setAdsorbEnable:YES];
             [[[UIApplication sharedApplication].windows lastObject] addSubview:_btn];
             [[_btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+               [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
              }];
         }
 
