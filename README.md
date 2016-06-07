@@ -26,7 +26,7 @@
       
       3.添加一个属性 @property (nonatomic, strong) UIButton *btn;
       
-      4.具体的就两句代码
+      4.具体的就两段代码
       - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
            if (scrollView.contentOffset.y < 128 && self.btn) {
                 [self.btn removeFromSuperview];
@@ -53,6 +53,12 @@
 
 # 注意事项
 
+[[[UIApplication sharedApplication].windows lastObject] addSubview:_btn]; 这句代码不要改成 [self.view addSubview:_btn];
+
 # TODO
 
+如有bug或者有特别的问题再修改
+
 # License
+
+无
