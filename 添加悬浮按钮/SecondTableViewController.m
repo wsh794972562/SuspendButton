@@ -8,10 +8,13 @@
 
 #import "SecondTableViewController.h"
 #import "UIButton+NMCategory.h"
+#import "ReactiveCocoa.h"
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+
 static NSString * const CellReuseIdentifier = @"123";
+
 @interface SecondTableViewController ()
 @property (nonatomic, strong) UIButton *btn;
 @end
@@ -42,11 +45,9 @@ static NSString * const CellReuseIdentifier = @"123";
     [_btn setDragEnable:YES];
     [_btn setAdsorbEnable:YES];
     [[[UIApplication sharedApplication].windows lastObject] addSubview:_btn];
-    [_btn addTarget:self action:@selector(showTag:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)showTag:(UIButton *)sender {
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [[_btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }];
 }
 
 
