@@ -22,6 +22,7 @@ static void *AdsorbEnableKey = &AdsorbEnableKey;
     return [objc_getAssociatedObject(self, DragEnableKey) boolValue];
 }
 
+
 - (void)setAdsorbEnable:(BOOL)adsorbEnable {
     objc_setAssociatedObject(self, AdsorbEnableKey,@(adsorbEnable), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

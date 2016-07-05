@@ -45,6 +45,7 @@ static NSString * const CellReuseIdentifier = @"123";
     [_btn setDragEnable:YES];
     [_btn setAdsorbEnable:YES];
     [[[UIApplication sharedApplication].windows lastObject] addSubview:_btn];
+    
     [[_btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
